@@ -1,11 +1,19 @@
+#![feature(alloc,global_allocator, allocator_api, heap_api)]
+
 #[macro_use] extern crate serde_derive;
 extern crate serde;
-
+extern crate alloc;
 extern crate rmp_serde as rmps;
 extern crate rmpv;
+extern crate jemallocator;
 
 use serde::{Deserialize, Serialize};
 use rmps::{Deserializer, Serializer};
+
+use jemallocator::Jemalloc;
+
+#[global_allocator]
+static A: Jemalloc = Jemalloc;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Header {
