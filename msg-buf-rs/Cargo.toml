@@ -9,3 +9,8 @@ serde_derive="*"
 rmpv="*"
 rmp-serde="*"
 jemallocator = "*"
+capnp = "*"
+failure="*"
+
+[build-dependencies]
+capnpc = "*"
